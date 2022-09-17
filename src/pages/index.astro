@@ -9,8 +9,10 @@ const builds = await Astro.glob("../builds/*.md");
   >
     Builds
   </h1>
+
+
   {
-    builds.map((build) => {
+    builds.map((build) => (
       <div class=" text-center outline outline-third outline-2 my-10  text-xl py-8 px-10">
 		<div class="text-3xl">{build.frontmatter.title}</div>
         <p class="mt-4 mb-8">{build.frontmatter.excerpt}</p>
@@ -20,7 +22,7 @@ const builds = await Astro.glob("../builds/*.md");
         >
           Read More
         </a>
-		</div>;
-    })
+		</div>
+    ))
   }
 </Layout>
