@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+export async function getStaticPaths() {
+    const builds = await Astro.glob('../builds/*.md')
+
+    return builds.map((build) => ({
+        params: {
+            slug: build.frontmatter.slug,
+        },
+        props:{
+            build,
+        },
+    } ));
+}
+
+const {Content , frontmatter} = Astro.props.build;
+---
+
+<Layout>
+    <div>
+        <div class="mt-5"></div>
+        <div class="md:text-left text-center md:mb-0 mb-9">
+    
+            <a
+              href="/"
+              class="text-second bg-third px-8 py-2 text-xl hover:bg-second hover:text-third border-2 border-third  "
+              > <i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back</a
+            >
+        </div>
+            <h2 class="text-3xl my-5 text-center">{frontmatter.title}</h2>
+        <div class="text-xl mb-5 text-third">Written On - {new Date (frontmatter.date).toLocaleDateString()}</div>
+        <div class="text-lg  mb-10">
+          <Content />
+        </div>
+    </div>
+</Layout>
