@@ -12,7 +12,7 @@ const builds = await Astro.glob("../builds/*.md");
 
   {
     builds.map((build) => (
-      <div class=" text-center outline outline-third outline-2   text-xl py-8 ">
+      <div class=" text-center outline outline-third outline-2 my-5  text-xl py-8 ">
         <div class="flex justify-center">
           <img src={build.frontmatter.img} alt="" class="md:w-[40vw] w-[80vw] px-0 md:px-2" />
         </div>
