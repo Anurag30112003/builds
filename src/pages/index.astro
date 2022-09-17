@@ -10,19 +10,27 @@ const builds = await Astro.glob("../builds/*.md");
     Builds
   </h1>
 
-
   {
     builds.map((build) => (
-      <div class=" text-center outline outline-third outline-2 my-10  text-xl py-8 px-10">
-		<div class="text-3xl">{build.frontmatter.title}</div>
+      <div class=" text-center outline outline-third outline-2   text-xl py-8 ">
+        <div class="flex justify-center">
+          <img src={build.frontmatter.img} alt="" class="md:w-[40vw] w-[80vw] px-0 md:px-2" />
+        </div>
+        <div class="text-3xl mt-4">{build.frontmatter.title}</div>
         <p class="mt-4 mb-8">{build.frontmatter.excerpt}</p>
-		<a
-          href={`/${build.frontmatter.slug}`}
-          class="text-second bg-third px-10 py-4 text-2xl hover:bg-second hover:text-third border-2 border-third "
+        <a
+          href={build.frontmatter.github}
+          class="border-2 border-third bg-third text-second px-5 py-2 rounded-xl mx-4 hover:bg-second hover:text-third"
         >
-          Read More
+          Code
         </a>
-		</div>
+        <a
+          href={build.frontmatter.link}
+          class="border-2 border-third bg-third text-second px-5 py-2 rounded-xl mx-4 hover:bg-second hover:text-third"
+        >
+          Visit
+        </a>
+      </div>
     ))
   }
 </Layout>
